@@ -1,0 +1,70 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #272727;
+  height: 100vh;
+}
+
+.burger_menu {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  transition: all .5s ease-in-out;
+}
+
+.burger_menu-btn {
+  position: absolute;
+  display: block;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #fff;
+  width: 100%;
+  height: 5px;
+  transition: all .5s ease-in-out;
+}
+
+.burger_menu-btn::before,
+.burger_menu-btn::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 5px;
+  background: #fff;
+  transition: all .5s ease-in-out;
+}
+
+.burger_menu-btn::before {
+  transform: translateY(-15px);
+}
+
+.burger_menu-btn::after {
+  transform: translateY(15px);
+}
+
+/* changement au click, disparition et translation horizontale de la barre du milieu */
+
+.burger_menu.active .burger_menu-btn {
+  transform: translateX(-50px);
+  background: transparent;
+}
+
+/* changement au click, before et after : rotations pour former une croix
++ translation pour annuler celle provoquée sur la barre horizontale */
+
+.burger_menu.active .burger_menu-btn::before {
+  transform: rotate(45deg) translate(35px, -35px);
+}
+
+.burger_menu.active .burger_menu-btn::after {
+  transform: rotate(-45deg) translate(35px, 35px);
+}
